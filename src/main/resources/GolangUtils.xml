@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="GolangUtils">
+    <template name="gdedup"
+              value="func dedup$NAME$(xs []$1$) []$1$ {&#10;    var seen = make(map[$3$]$1$)&#10;    for _, v := range xs {&#10;    if _, ok := seen[$2$]; ok {&#10;    continue&#10;    }&#10;    seen[$2$]=v&#10;    }&#10;    var res []$1$&#10;    for _, v := range seen {&#10;        res = append(res, v)&#10;    }&#10;    return res&#10;}"
+              description="Dedup" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="&quot;Thingy&quot;" alwaysStopAt="true"/>
+        <variable name="1" expression="" defaultValue="&quot;collection&quot;" alwaysStopAt="true"/>
+        <variable name="3" expression="goSuggestVariableName()" defaultValue="&quot;string&quot;" alwaysStopAt="true"/>
+        <variable name="2" expression="goSuggestVariableName()" defaultValue="&quot;v&quot;" alwaysStopAt="true"/>
+        <context>
+            <option name="GOLANG" value="true" />
+            <option name="GO_FILE" value="true"/>
+            <option name="GO_STATEMENT" value="true"/>
+            <option name="GO_TYPE" value="true"/>
+        </context>
+    </template>
+    <template name="gmap" value="func $NAME$(xs []$A$) []$B$ {&#10;    var res []$B$&#10;    for _, x := range xs {&#10;        b := $FUNCTIONMAP$&#10;        res = append(res, b)&#10;    }&#10;    return res&#10;}" description="Map" toReformat="true" toShortenFQNames="true">
+        <variable name="NAME" expression="" defaultValue="&quot;Thingy&quot;" alwaysStopAt="true" />
+        <variable name="A" expression="" defaultValue="&quot;SourceType&quot;" alwaysStopAt="true" />
+        <variable name="B" expression="" defaultValue="&quot;DestType&quot;" alwaysStopAt="true" />
+        <variable name="FUNCTIONMAP" expression="" defaultValue="&quot;TransformationFunction&quot;" alwaysStopAt="true" />
+        <context>
+            <option name="GOLANG" value="true" />
+            <option name="GO_FILE" value="true" />
+            <option name="GO_STATEMENT" value="true" />
+            <option name="GO_TYPE" value="true" />
+        </context>
+    </template>
+    <template name="gdump" value="fmt.Printf(&quot;$FILE$:$LINE$:%+v\n&quot;,$END$)" description="A better dump" toReformat="true" toShortenFQNames="true">
+        <variable name="FILE" expression="fileName()" defaultValue="" alwaysStopAt="true" />
+        <variable name="LINE" expression="lineNumber()" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="GO_STATEMENT" value="true" />
+            <option name="GOLANG" value="true" />
+        </context>
+    </template>
+</templateSet>

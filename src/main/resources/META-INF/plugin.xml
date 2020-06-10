@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>me.dlow.golangsnips</id>
+    <name>Golang Snips</name>
+    <version>Unused.See gradle</version>
+    <vendor email="dlow@tuta.io" url="https://dlow.me">Daniel Low</vendor>
+
+    <description><![CDATA[
+  Some snippets to make it easy to write functional go.
+    ]]></description>
+
+    <change-notes><![CDATA[
+    See gradle because this will be patched over at build time.
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="201.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <defaultLiveTemplates file="/GolangUtils.xml"/>
+        <liveTemplateContext implementation="ContextProvider"/>
+    </extensions>
+
+</idea-plugin>
